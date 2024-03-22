@@ -33,6 +33,9 @@ bld/
 # Enable .NET Core SDK debug/analysis tools
 dotnet/
 
+# Visual studio files
+.vs/
+
 # VSCode specific files
 .vscode/
 .idea/
