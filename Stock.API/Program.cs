@@ -1,4 +1,8 @@
 
+using Stock.API.Infrastucture;
+using Stock.API.Infrastucture.Repositories;
+using Stock.API.Services;
+
 namespace Stock.API
 {
     public class Program
@@ -14,9 +18,13 @@ namespace Stock.API
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            builder.Services.AddDbContext<StockDBContext>();
+            builder.Services.AddScoped<IStockRepository, StockRepository>();
+            builder.Services.AddScoped<IStockService, StockService>();
+
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
+            //Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
