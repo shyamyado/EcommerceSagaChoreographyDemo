@@ -9,7 +9,7 @@ namespace Stock.API.Infrastucture.EntityConfiguration
         public void Configure(EntityTypeBuilder<ProductStock> builder)
         {
             builder.ToTable("ProductStock");
-            builder.HasKey(t => t.Id);
+            builder.HasKey(t => t.Id).IsClustered();
             builder.Property(t => t.Quantity).HasDefaultValue(0);
         }
     }

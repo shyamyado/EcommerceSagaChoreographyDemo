@@ -1,4 +1,8 @@
 
+using Order.API.Infrastructure;
+using Order.API.Infrastructure.Repositories;
+using Order.API.Services;
+
 namespace Order.API
 {
     public class Program
@@ -13,6 +17,11 @@ namespace Order.API
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddDbContext<OrderDBContext>();
+            builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+            builder.Services.AddScoped<IOrderService, OrderService>();
+
 
             var app = builder.Build();
 
