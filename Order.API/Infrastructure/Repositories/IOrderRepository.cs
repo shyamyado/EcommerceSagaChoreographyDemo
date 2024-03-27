@@ -6,6 +6,6 @@ namespace Order.API.Infrastructure.Repositories
     {
         public Task<ProductOrder> CreateOder(NewOrder newOrder);
         public Task<ProductOrder> GetOrderById(int OrderId);
-        public Task<ProductOrder> UpdateOrder(ProductOrder newOrder);
+        public Task<ProductOrder> UpdateOrder(ChangeOrder changeOrder);
     }
 }

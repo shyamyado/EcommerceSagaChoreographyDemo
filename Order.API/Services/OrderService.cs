@@ -23,7 +23,7 @@ namespace Order.API.Services
             return order;
         }
 
-        public async Task<ProductOrder> UpdateOrder(NewOrder changeOrder)
+        public async Task<ProductOrder> UpdateOrder(ChangeOrder changeOrder)
         {
             var updatedOrder = await _orderRepository.UpdateOrder(changeOrder);
             return updatedOrder;
