@@ -1,5 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -12,6 +13,8 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 =======
+=======
+>>>>>>> 6c78a3ef1e90890ea995f592b7bb7656ca2384f4
 	<PropertyGroup>
 		<TargetFramework>net7.0</TargetFramework>
 		<Nullable>enable</Nullable>
@@ -28,6 +31,15 @@
 		</PackageReference>
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
 	</ItemGroup>
+<<<<<<< HEAD
 >>>>>>> Stashed changes
+=======
+
+	<ItemGroup>
+		<Folder Include="Controllers\" />
+		<Folder Include="Infrastructure\Repositories\" />
+		<Folder Include="Services\" />
+	</ItemGroup>
+>>>>>>> 6c78a3ef1e90890ea995f592b7bb7656ca2384f4
 
 </Project>

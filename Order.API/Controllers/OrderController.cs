@@ -39,8 +39,10 @@ namespace Order.API.Controllers
 
         [HttpPut]
         [Route("/")]
-        [ProducesResponseType((int)HttpStatusCode.OK)]
-        public async Task<ActionResult<ProductOrder>> UpdateOrder([FromBody] NewOrder changeOrder)
+        [ProducesResponseType(typeof(ProductOrder), (int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+        public async Task<ActionResult<ProductOrder>> UpdateOrder([FromBody] ChangeOrder changeOrder)
         {
             var updatedOrder = _orderService.UpdateOrder(changeOrder);
             return Ok(updatedOrder);
