@@ -1,4 +1,11 @@
 
+<<<<<<< Updated upstream
+=======
+using Payment.API.Infrastructure;
+using Payment.API.Infrastructure.Repositories;
+using Payment.API.Services;
+
+>>>>>>> Stashed changes
 namespace Payment.API
 {
     public class Program
@@ -14,6 +21,13 @@ namespace Payment.API
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+<<<<<<< Updated upstream
+=======
+            builder.Services.AddDbContext<PaymentDBContext>();
+            builder.Services.AddScoped<IPaymentRepository, PaymentRepository>();
+            builder.Services.AddScoped<IPaymentService, PaymentServices>();
+
+>>>>>>> Stashed changes
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
