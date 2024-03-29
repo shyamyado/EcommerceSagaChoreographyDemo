@@ -59,7 +59,7 @@ namespace Payment.API.Controllers
             var payment = await _paymentService.UpdatePayment(id, newPayment);
             if (payment == null)
             {
-                return BadRequest
+                return BadRequest;
             }
             return Ok(payment);
         }
