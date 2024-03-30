@@ -1,15 +1,18 @@
 ﻿using Order.API.Infrastructure.Repositories;
 using Order.API.Model;
+using RabbitMQEventBus;
 
 namespace Order.API.Services
 {
     public class OrderService : IOrderService
     {
         private readonly IOrderRepository _orderRepository;
+        private readonly IRabbitMQPersistantConnection _rabbitMQPersistantConnection;
 
-        public OrderService(IOrderRepository orderRepository)
+        public OrderService(IOrderRepository orderRepository, IRabbitMQPersistantConnection rabbitMQPersistantConnection)
         {
-            _orderRepository = orderRepository;
+            _orderRepository = orderRepository ?? throw new ArgumentNullException(nameof(orderRepository));
+            _rabbitMQPersistantConnection = rabbitMQPersistantConnection ?? throw new ArgumentNullException(nameof(rabbitMQPersistantConnection));
         }
         public Task<ProductOrder> CreateOder(NewOrder newOrder)
         {

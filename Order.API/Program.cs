@@ -2,6 +2,8 @@
 using Order.API.Infrastructure;
 using Order.API.Infrastructure.Repositories;
 using Order.API.Services;
+using RabbitMQ.Client;
+using RabbitMQEventBus;
 
 namespace Order.API
 {
@@ -17,6 +19,12 @@ namespace Order.API
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddSingleton<IRabbitMQPersistantConnection>(sp =>
+            {
+                var factory = new ConnectionFactory { HostName = "localhost", UserName = "user01", Password = "123", Port = 5672, };
+                return new RabbitMQPersistantConnection(factory);
+            });
 
             builder.Services.AddDbContext<OrderDBContext>();
             builder.Services.AddScoped<IOrderRepository, OrderRepository>();
