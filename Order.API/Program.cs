@@ -1,4 +1,5 @@
 
+using Microsoft.EntityFrameworkCore;
 using Order.API.Infrastructure;
 using Order.API.Infrastructure.Repositories;
 using Order.API.Services;
@@ -27,6 +28,7 @@ namespace Order.API
             });
 
             builder.Services.AddDbContext<OrderDBContext>();
+     
             builder.Services.AddScoped<IOrderRepository, OrderRepository>();
             builder.Services.AddScoped<IOrderService, OrderService>();
 

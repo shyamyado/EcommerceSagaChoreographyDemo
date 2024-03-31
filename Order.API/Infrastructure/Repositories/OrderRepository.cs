@@ -12,19 +12,31 @@ namespace Order.API.Infrastructure.Repositories
         {
             _orderDBContext = orderDBContext;
         }
-        public async Task<ProductOrder> CreateOder(NewOrder newOrder)
+        public async Task<ProductOrder> CreateOrder(NewOrder newOrder)
         {
-            var productOrder = new ProductOrder
+            try
             {
-                CustomerId = newOrder.CustomerId,
-                OrderStatus = "Pending",
-                CreatedDate = DateTime.UtcNow,
-                UpdatedDate = DateTime.UtcNow
-            };
 
-            var orderEntry = await _orderDBContext.ProductOrders.AddAsync(productOrder);
-            await _orderDBContext.SaveChangesAsync();
-            return orderEntry.Entity;
+
+                var productOrder = new ProductOrder
+                {
+                    CustomerId = newOrder.CustomerId,
+                    OrderStatus = "Pending",
+                    ProductId = newOrder.ProductId,
+                    Quantity = newOrder.Quantity,
+                    //CreatedDate = DateTime.UtcNow,
+                    //UpdatedDate = DateTime.UtcNow
+                };
+
+                _orderDBContext.ProductOrders.Add(productOrder);
+                _orderDBContext.SaveChanges();
+                return productOrder;
+            }
+            catch (Exception ex)
+            {
+                await Console.Out.WriteLineAsync($"Error occured : --------{ex}");
+            }
+            return null;
         }
 
         public async Task<ProductOrder> GetOrderById(int OrderId)

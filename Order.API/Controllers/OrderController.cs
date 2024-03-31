@@ -33,8 +33,8 @@ namespace Order.API.Controllers
         [ProducesResponseType((int)HttpStatusCode.OK)]
         public async Task<ActionResult<ProductOrder>> AddOrder([FromBody]NewOrder newOrder)
         {
-            var createdOrder = _orderService.CreateOder(newOrder);
-            return Ok("Add order");
+            var createdOrder = _orderService.CreateOrder(newOrder);
+            return Ok(createdOrder);
         }
 
         [HttpPut]

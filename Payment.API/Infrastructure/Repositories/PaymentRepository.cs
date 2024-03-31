@@ -42,7 +42,7 @@ namespace Payment.API.Infrastructure.Repositories
                 payment.Amount = newPayment.Amount;
                 payment.PaymentStatus = payment.PaymentStatus;
                 _paymentDBContext.Entry(payment).CurrentValues.SetValues(payment);
-                _paymentDBContext.SaveChanges();
+                await _paymentDBContext.SaveChangesAsync();
             }
             return payment;
         }

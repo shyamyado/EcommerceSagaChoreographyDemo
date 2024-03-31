@@ -14,9 +14,11 @@ namespace Order.API.Services
             _orderRepository = orderRepository ?? throw new ArgumentNullException(nameof(orderRepository));
             _rabbitMQPersistantConnection = rabbitMQPersistantConnection ?? throw new ArgumentNullException(nameof(rabbitMQPersistantConnection));
         }
-        public Task<ProductOrder> CreateOder(NewOrder newOrder)
+        public async Task<ProductOrder> CreateOrder(NewOrder newOrder)
         {
-            var order = _orderRepository.CreateOder(newOrder);
+            var order = await _orderRepository.CreateOrder(newOrder);
+            string eventMsgQueueName = "new_order";
+            _rabbitMQPersistantConnection.Publish(eventMsgQueueName, newOrder);
             return order;
         }
 
